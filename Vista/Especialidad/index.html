@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapelesINC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos/estilo.css">
+
+    <!-- javascript -->
+    <script type='text/javascript' src="../js/jquery-1.7.1.min.js" > </script>
+    <script type='text/javascript'>
+
+    function cargarcontrolador()
+    {
+      $.post("../../Controlador/ProductoController.php",
+          {'opcion':'consultar'},respuesta);
+    }
+    function respuesta(arg)
+    {
+      $("#datos").append(arg);
+    }
+
+    window.onload=cargarcontrolador;
+    </script>
+
+</head>
+<body>
+  
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand h1 mb-0" href="#">
+                <img src="imgs/logo.png" alt="" height="40" class="d-inline-block align-text-bottom">
+                PapelesINC
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav " >
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Boligrafos</a></li>
+                            <li><a class="dropdown-item" href="#">Lapices</a></li>
+                            <li><a class="dropdown-item" href="#">Cuadernos</a></li>
+                            <li><a class="dropdown-item" href="#">Marcadores</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Quiénes Somos</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Buscar</button>
+                </form>
+                <a class="nav-item btn btn-warning ms-5" href="#">Registrarse</a>
+                <a class="nav-item btn btn-light ms-3" href="#">Iniciar Sesion</a>
+            </div>    
+        </div>
+    </nav>
+
+    <div class="container-lg">
+        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="imgs/cuadernos.jpg" class="d-block w-100" alt="..." style="height: 600px; width: 300px;">
+              </div>
+              <div class="carousel-item">
+                <img src="imgs/Boligrafos.jpg" class="d-block w-100" alt="..." style="height: 600px; width: 300px;">
+              </div>
+              <div class="carousel-item">
+                <img src="imgs/Marcadores1.jpg" class="d-block w-100" alt="..." style="height: 600px; width: 300px;">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden" >Next</span>
+          </button>
+    </div>
+
+    <div class="container-lg mt-5 mb-5">
+        <p class="text-start fs-2 fw-light mb-4 d-inline-block">Todos los productos</p>
+        <a href="nuevo.html" class="btn btn-dark btn-lg d-inline-block ms-5">Agregar Producto</a>
+        <hr>
+        <div class="container-fluid">
+          <div class="row" id="datos">
+          <!-- <div class="container"> -->
+            <!-- <div class="row"> -->
+              <!-- <div class="col">
+                  <a href="#" class="link-success">
+                    <img src="imgs/lapiz1.jpg" class="img-fluid" alt="">
+                    <p class="text-center mt-1 fw-bold">Lapiz Bic Evolution</p>
+                  </a>
+                  <p class="text-center lh-1 fs-6 fst-italic">En stock</p>
+                  <p class="text-center lh-1 fs-5 fst-bold">$0.15</p>
+              </div> -->
+          <!-- </div> -->
+        <!-- </div> -->
+          </div>
+        </div>
+    </div>
+
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
