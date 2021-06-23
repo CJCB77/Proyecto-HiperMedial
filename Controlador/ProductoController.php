@@ -14,7 +14,7 @@ switch($_POST['opcion'])
 			$imagen = $fila['img'];
 			$id = $fila['id_producto'];
 			#Carga la imagen y nombre como un enlace
-			echo "<a href='detalles_prod.html?id=". "$id'" . "class='link-success'>";
+			echo "<a href='detalles_prod.html'" . "class='link-success'>";
 			echo "<img class='img-fluid mt-3' style='width: 250px; height:360px' src='../../" . $imagen . "'>";
 			echo "<p class='text-center fs-5 mt-1 fw-normal'>" . $fila['nombre']."</p>";
 			echo "</a>";
