@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script type='text/javascript' src="../js/jquery-1.7.1.min.js" > </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="estilos/estilo.css">
 
+
+    
+
     <title>Detalles de Producto</title>
+
 </head>
 <body>
 
@@ -55,11 +60,11 @@
 
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-6">
-                <img src="../../UploadImgs/lapiz1.jpg" class="w-50" alt="">
+            <div class="col-6 text-center">
+                <img src="../../UploadImgs/lapiz1.jpg" class="w-50" alt="" >
             </div>
-            <div class="col-6">
-                <h2 class="mb-4">Detalles de Producto</h2>
+            <div class="col-6 text-start">
+                <h2 class="mb-4"> <?php echo $nom ?> </h2>
                 <p class="fw-bold">Id: 3</p>
                 <p class="fs-5">Lapiz BIC 2B</p>
                 <p class="fw-light fs-6"><span class="fw-bold">Descripcion: </span>Lapiz punta gruesa mina 2b</p>
@@ -69,6 +74,7 @@
                 <button class="btn btn-dark btn-lg mt-2">Agregar</button>
             </div>
         </div>
+        
 
     </div>
 
