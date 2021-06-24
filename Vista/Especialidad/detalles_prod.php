@@ -68,6 +68,7 @@
     $obj_conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
     $sql = "select * from tbproducto where id_producto=" . $id;
+    $sqlCategoria = "select * from tbcategoria where id_categoria=";
     $resultado = $obj_conexion->query($sql);
 
     if ($resultado) {
@@ -84,7 +85,14 @@
             echo "<h2 class='mb-4'>" . $fila['nombre'] . "</h2>";
             echo "<p class='fw-bold'>". "Codigo:" . $fila['id_producto'] ."</p>";
             echo "<p class='fw-light fs-6'>". $fila['descripcion'] ."</p>";
-            echo "<p class='fs-6'><span class='fw-bold'>Categoria:</span>". $fila['id_categoria'] ."</p>";
+
+            #Necesita Optimizacion!
+            #Agarra la categoria de la tabla categoria comparando los ids
+            $sqlCategoria.= $fila['id_categoria'];
+            $resultadoCategoria = $obj_conexion->query($sqlCategoria);
+            $categoria = $resultadoCategoria -> fetch_array();
+            echo "<p class='fs-6'><span class='fw-bold'>Categoria: </span>". $categoria[1] ."</p>";
+
             echo "<p class='fs-6'>En stock <span class='fw-bold'>". $fila['stock'] ."</span></p>";
             echo "<p class='fs-5'><span class='fw-bold'>Precio:</span> $". $fila['precio'] ."</p>";
             echo "<button class='btn btn-dark btn-lg mt-2'>Agregar a Carrito</button>";
