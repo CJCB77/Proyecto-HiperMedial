@@ -9,7 +9,7 @@ Plantilla de Detalles de Producto: Listo<br>
 
 Base de datos:<br>
 Tabla de producto : Listo<br>
-Tabla de Categoria: En proceso<br>
+Tabla de Categoria: Listo<br>
 Tabla de Usuario: <strong>Null</strong><br>
 Tabla de Carrito de Compra: <strong>Null</strong><br>
 Tabla de Orden de Compra: <strong>Null</strong><br>
