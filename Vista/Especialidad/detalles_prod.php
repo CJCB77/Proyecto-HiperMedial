@@ -9,14 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="estilos/estilo.css">
 
-
-    
-
     <title>Detalles de Producto</title>
 
 </head>
 <body>
 
+    
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -58,13 +56,62 @@
         </div>
     </nav>
 
-    <div class="container-fluid mt-5">
+    <?php 
+
+    $dbhost = 'localhost:3307';
+    $dbuser = 'root';
+    $dbpass = "";
+    $dbname = "dbpapeleria";
+
+    $id = $_GET['id'];
+
+    $obj_conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+    $sql = "select * from tbproducto where id_producto=" . $id;
+    $resultado = $obj_conexion->query($sql);
+
+    if ($resultado) {
+        while($fila = $resultado -> fetch_array()){
+
+            echo " <div class='container-fluid mt-5'>";
+            echo "<div class='row'>";
+
+            echo "<div class='col-6 text-center'>";
+            echo "<img src='../../" . $fila['img'] . "'class='w-50' >";
+            echo "</div>";
+
+            echo "<div class='col-6 text-start'>";
+            echo "<h2 class='mb-4'>" . $fila['nombre'] . "</h2>";
+            echo "<p class='fw-bold'>". "Codigo:" . $fila['id_producto'] ."</p>";
+            echo "<p class='fw-light fs-6'>". $fila['descripcion'] ."</p>";
+            echo "<p class='fs-6'><span class='fw-bold'>Categoria:</span>". $fila['id_categoria'] ."</p>";
+            echo "<p class='fs-6'>En stock <span class='fw-bold'>". $fila['stock'] ."</span></p>";
+            echo "<p class='fs-5'><span class='fw-bold'>Precio:</span> $". $fila['precio'] ."</p>";
+            echo "<button class='btn btn-dark btn-lg mt-2'>Agregar a Carrito</button>";
+            echo "</div>";
+
+            echo "</div>";
+            echo "</div>";
+
+    
+
+        }
+    }
+    
+
+
+    
+    ?>
+
+    
+
+    <!-- <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-6 text-center">
                 <img src="../../UploadImgs/lapiz1.jpg" class="w-50" alt="" >
             </div>
             <div class="col-6 text-start">
-                <h2 class="mb-4"> <?php echo $nom ?> </h2>
+                <h2 class="mb-4"> Lapiz 2b </h2>
                 <p class="fw-bold">Id: 3</p>
                 <p class="fs-5">Lapiz BIC 2B</p>
                 <p class="fw-light fs-6"><span class="fw-bold">Descripcion: </span>Lapiz punta gruesa mina 2b</p>
@@ -76,7 +123,7 @@
         </div>
         
 
-    </div>
+    </div> -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

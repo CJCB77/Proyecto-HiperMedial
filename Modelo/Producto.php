@@ -10,6 +10,7 @@ Class Producto
 		$producto=$conexion->consultar('tbproducto');
 		return $producto;
 	}
+	
 
 	public function nuevo($datos)
 	{	$conexion=new Conexion;
@@ -19,7 +20,7 @@ Class Producto
 	public function ObtenerFiltro($filtro)
 	{
 		$conexion=new Conexion;
-		$producto=$conexion->consultarFiltro('tbempleado',$filtro);
+		$producto=$conexion->consultarFiltro('tbproducto',$filtro);
 		return $producto;
 	}
 	

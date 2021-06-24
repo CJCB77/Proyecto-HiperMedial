@@ -1,5 +1,5 @@
 <?php
-require_once("../modelo/Producto.php");
+require_once("../Modelo/Producto.php");
 $objProducto=new Producto;
 switch($_POST['opcion'])
 {
@@ -14,7 +14,7 @@ switch($_POST['opcion'])
 			$imagen = $fila['img'];
 			$id = $fila['id_producto'];
 			#Carga la imagen y nombre como un enlace
-			echo "<a href='detalles_prod.html?id=" . $id . "'" . "class='link-success'>";
+			echo "<a href='detalles_prod.php?id=" . $id . "'" . "class='link-success'>";
 			echo "<img class='img-fluid mt-3' style='width: 250px; height:360px' src='../../" . $imagen . "'>";
 			echo "<p class='text-center fs-5 mt-1 fw-normal'>" . $fila['nombre']."</p>";
 			echo "</a>";
@@ -53,7 +53,7 @@ switch($_POST['opcion'])
 	break;
 
 	case 'consultaxcodigo':
-		$filtro['id_producto']=$_POST['codigo'];
+		$filtro['id']=$_POST['codigo'];
 		echo json_encode($datos=$objProducto->ObtenerFiltro($filtro));
 	break;
 
