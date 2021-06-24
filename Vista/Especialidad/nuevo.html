@@ -21,14 +21,30 @@
                     $("#datos").serialize(),respuesta);
                 window.location.href = "index.html";
             });
-        });
-        
-            
+        });  
         
         function respuesta(arg)
         {
             alert(arg);
         }
+
+        function cargarcontroladorCombo()
+	    {
+		$.post("../../Controlador/CategoriaController.php",
+				{'opcion':'combo'},respuestaCombo);
+    	}
+	
+	    function respuestaCombo(arg)
+	    {
+		$("#categoria").append(arg);
+	    }	
+	
+	    function respuesta(arg)
+	    {
+		alert(arg);
+	    }
+        window.onload=cargarcontroladorCombo;
+
     </script>
 </head>
 <body>
@@ -51,7 +67,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="categoria">Categoria:</label>
-                <input type="number" class="form-control" id="categoria" name="categoria" placeholder="categoria">
+                <select class="form-control" name="categoria" id="categoria"></select>
             </div>
         </div>
         <div class="form-row">
