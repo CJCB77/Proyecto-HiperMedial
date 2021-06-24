@@ -5,7 +5,7 @@ Plantilla de Indice: Lista<br>
 Plantilla de Login : En proceso<br>
 Plantilla de Registro: <strong>Null</strong><br>
 Plantilla Acerca de : Lista<br>
-Plantilla de Detalles de Producto: En Proceso<br>
+Plantilla de Detalles de Producto: Listo<br>
 
 Base de datos:<br>
 Tabla de producto : Listo<br>
@@ -17,6 +17,7 @@ Tabla Item Carrito de Compra: <strong>Null</strong><br>
 
 CRUD:<br>
 Consultar todos los productos: Listo<br>
+Consultar los productos individualmente: Listo<br>
 Consultar por categoria: <strong>Null</strong><br>
 Consultar en la barra de busqueda: <strong>Null</strong><br>
 Agregar productos: Listo<br>
