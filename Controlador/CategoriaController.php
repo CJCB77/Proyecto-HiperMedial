@@ -17,6 +17,18 @@ switch($_POST['opcion'])
 		}
 		echo $tabla;
 		break;
+	
+	case 'cargarCategorias':
+		$datos=$objCategoria->ObtenerTodos();
+		$tabla="";
+		
+		foreach($datos as $fila)
+		{
+			echo "<li><a class='dropdown-item' href='#'>". $fila['categoria'] ."</a></li>";
+		}
+		echo $tabla;
+		break;
+
 		
 	case 'combo':
 		$datos=$objCategoria->ObtenerTodos();
