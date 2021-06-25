@@ -11,6 +11,25 @@
 
     <title>Detalles de Producto</title>
 
+    <script type='text/javascript' src="../js/jquery-1.7.1.min.js" > </script>
+    <script type='text/javascript'>
+
+        function cargarcontrolador()
+        {
+          $.post("../../Controlador/CategoriaController.php",
+              {'opcion':'cargarCategorias'},respuesta2);
+        }
+    
+        function respuesta2(arg)
+        {
+          $("#categorias").append(arg);
+        }
+    
+    
+    
+        window.onload=cargarcontrolador;
+    </script>
+
 </head>
 <body>
 
@@ -18,7 +37,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand h1 mb-0" href="#">
+            <a class="navbar-brand h1 mb-0" href="index.html">
                 <img src="imgs/logo.png" alt="" height="40" class="d-inline-block align-text-bottom">
                 PapelesINC
             </a>
@@ -34,11 +53,8 @@
                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Productos
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Boligrafos</a></li>
-                            <li><a class="dropdown-item" href="#">Lapices</a></li>
-                            <li><a class="dropdown-item" href="#">Cuadernos</a></li>
-                            <li><a class="dropdown-item" href="#">Marcadores</a></li>
+                        <ul class="dropdown-menu" id="categorias" aria-labelledby="navbarDropdownMenuLink">
+
 
                         </ul>
                     </li>
