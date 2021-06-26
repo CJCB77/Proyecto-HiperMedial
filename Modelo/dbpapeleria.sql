@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 23-06-2021 a las 19:05:25
+-- Tiempo de generación: 26-06-2021 a las 07:49:22
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.3.21
 
@@ -24,6 +24,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbcategoria`
+--
+
+DROP TABLE IF EXISTS `tbcategoria`;
+CREATE TABLE IF NOT EXISTS `tbcategoria` (
+  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_categoria`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tbcategoria`
+--
+
+INSERT INTO `tbcategoria` (`id_categoria`, `categoria`) VALUES
+(1, 'boligrafos'),
+(2, 'lapices'),
+(3, 'marcadores'),
+(4, 'cuadernos');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbproducto`
 --
 
@@ -38,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `tbproducto` (
   `marca` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_producto`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbproducto`
@@ -53,7 +76,27 @@ INSERT INTO `tbproducto` (`id_producto`, `nombre`, `descripcion`, `id_categoria`
 (6, 'Cuaderno Estilo 100 pags.', 'Cuaderno de a cuadros 100 hojas universitario', 4, 2, 15, 'Estilo', 'UploadImgs/cuaderno1.jpg'),
 (7, 'Boligrafo Stadler negro', 'boligrafo tinta negra stadler, punta fina', 1, 1, 0, 'Stadler', 'UploadImgs/boligrafo2.jpg'),
 (8, 'Cuaderno lineas Norma', 'Cuaderno universitario de 100 pags. Norma', 4, 2.37, 30, 'Norma', 'UploadImgs/cuaderno2.jpg'),
-(11, 'Lapiz 2b BIC', 'lapiz punta gruesa', 2, 0.22, 100, 'BIC', 'UploadImgs/lapiz1.jpg');
+(13, 'lapiz 2b', 'lapiz 2b grueso', 2, 0.21, 100, 'BIC', 'UploadImgs/lapiz1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbusuario`
+--
+
+DROP TABLE IF EXISTS `tbusuario`;
+CREATE TABLE IF NOT EXISTS `tbusuario` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `contraseña` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `apellido` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `direccion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ciudad` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `celular` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
