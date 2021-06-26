@@ -24,7 +24,7 @@ switch($_POST['opcion'])
 		
 		foreach($datos as $fila)
 		{
-			echo "<li><a class='dropdown-item' href='#'>". $fila['categoria'] ."</a></li>";
+			echo "<li><a class='dropdown-item' href='prod_categorias.php?id=". $fila['id_categoria'] ."'>". $fila['categoria'] ."</a></li>";
 		}
 		echo $tabla;
 		break;

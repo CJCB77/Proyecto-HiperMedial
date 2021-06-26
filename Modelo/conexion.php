@@ -38,6 +38,24 @@ Class conexion
 			return $e->getMessage();
 		}
 	}
+	public function consultaporI($tabla)
+	{	try {
+		if(!$this->conectar())
+		{	return "No conecta".$this->error;
+			exit;
+		}
+		$query="Select * from $tabla";
+		//Prepare, prepara una sentencia SQL para su ejecución
+		$result_set = $this->dbconn->prepare($query);
+		$result_set->execute();
+		//fetchAll Devuelve un array que contiene todas las filas restantes del conjunto de resultados.
+		$result = $result_set->fetchAll();
+		return $result;
+		} catch (Exception $e) {
+			return $e->getMessage();
+		}
+	}
+	
 	
 	public function consultarFiltro($tabla,$filtro)
 	{	try {
