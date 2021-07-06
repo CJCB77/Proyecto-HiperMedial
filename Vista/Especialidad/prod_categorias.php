@@ -68,7 +68,7 @@
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                     <button class="btn btn-outline-warning" type="submit">Buscar</button>
                 </form>
-                <a class="nav-item btn btn-warning ms-5" href="#">Registrarse</a>
+                <a class="nav-item btn btn-warning ms-5" href="registro.html">Registrarse</a>
                 <a class="nav-item btn btn-light ms-2" href="login.html">Iniciar Sesion</a>
           
             </div>    
