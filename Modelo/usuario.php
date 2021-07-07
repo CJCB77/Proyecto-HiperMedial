@@ -23,6 +23,14 @@ Class Usuario
 		$usuario=$conexion->consultarFiltro('tbusuario',$filtro);
 		return $usuario;
 	}
+
+	public function UsuarioExiste($usuario)
+	{
+		$conexion = new Conexion;
+		$usuario = $conexion->consultarUsuario('tbusuario',$usuario);
+		return $usuario;
+
+	}
 	
 }
 ?>

@@ -1,6 +1,7 @@
 <?php
 require_once("../Modelo/usuario.php");
 $objUsuario=new Usuario;
+
 switch($_POST['opcion'])
 {
 	case 'consultar':
@@ -35,6 +36,38 @@ switch($_POST['opcion'])
 					echo "Error al registrar";
 				}
 	break;
+
+	case 'iniciar':
+		$nombre = $_POST['nombre'];
+		$passwd = $_POST['contrasena'];
+
+		$datos = $objUsuario->UsuarioExiste($nombre);
+
+		if ($datos){
+			if ($passwd == $datos['contrasena']){
+
+				session_start();
+
+				$_SESSION["usuarioid"] = $datos['id_usuario'];
+				$_SESSION["usuarioNombre"] = $datos['nombre'];
+				exit;
+				
+			}
+			else{
+				echo "Contraseña incorrecta";
+			}
+
+		}
+		else{
+			echo "Usuario no existe";
+		}
+	break;
+
+	case 'salir':
+		session_unset();
+		session_destroy();
+	break;
+
 
 	case 'consultaxcodigo':
 		$filtro['id']=$_POST['codigo'];
