@@ -29,7 +29,7 @@ switch($_POST['opcion'])
 				if($objUsuario->nuevo($datos))
 				{
 					echo "Registro ingresado";
-					echo $datos['usuario'];
+	
 				}
 				else
 				{

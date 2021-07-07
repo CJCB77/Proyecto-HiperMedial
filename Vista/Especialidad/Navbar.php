@@ -46,8 +46,10 @@
 
                     if (isset($_SESSION["usuarioid"])){
 
-                        echo "<a class='nav-item btn btn-warning ms-5' href='#'>Carrito</a>";
-                        echo "<a class='nav-item btn btn-light ms-5' href='../includes/logout.inc.php' >Cerrar Sesion</a>";
+                        echo "<a class='nav-item btn btn-outline-light ms-5' href='#'>
+                        Carrito <img src='imgs/shopping-cart.svg' style='height:25px'>
+                        </a>";
+                        echo "<a class='nav-item btn btn-danger ms-4' href='../includes/logout.inc.php' >Cerrar Sesion</a>";
 
                     }else{
                         echo "<a class='nav-item btn btn-warning ms-5' href='registro.php'>Registrarse</a>";

@@ -16,9 +16,9 @@
     <script type='text/javascript'>
 
         $(function(){
-            $("#guardar").click(function(){ 
+            $("#registrar").click(function(){ 
                 $.post("../../Controlador/UsuarioController.php",
-                    $("#datos").serialize(),respuesta);
+                    $("#datos_registro").serialize(),respuesta);
                 window.location.href = "index.php";
             });
         }); 
@@ -54,7 +54,7 @@
 
     <div class="container-fluid mt-5">
         <h1 class="text-center">Registrate!</h1>
-        <form id="datos">
+        <form id="datos_registro">
 
             <input type="text" class="form-control" name="opcion" value="ingresar" hidden />
 
@@ -125,7 +125,7 @@
             </div>
     
             <div class="d-flex justify-content-center mt-2">
-                <button type="button" class="btn btn-danger btn-lg mt-3" id="guardar">Registrarse</button>
+                <button type="button" class="btn btn-danger btn-lg mt-3" id="registrar">Registrarse</button>
             </div>
         </form>
         </div>
