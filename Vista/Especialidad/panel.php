@@ -10,14 +10,22 @@
     <link rel="stylesheet" href="estilos/estilo.css">
 </head>
 <body>
-    <div class="text-center container-md mb-5">
+
+    <?php
+
+    include_once "Navbar.php";
+
+    ?>
+
+
+    <div class="text-center container-md mb-5 mt-5">
         <h1 class=" mt-3 mb-3">Panel de Aministracion</h1>
         <img src="imgs/mantenimiento-web.png" class="w-25 mt-3 mb-4" alt="">
         <div class="row">
             <div class="col-md-6 position-relative" style="background-color:#185ADB; border-top-left-radius: 15px; height: 300  px;">
                 <a href="#" class="btn btn-lg btn-dark">Productos</a>
                 <div class="container-fluid">
-                    <a href="#" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
+                    <a href="productos_tabla.php" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
                 </div>  
             </div>
 

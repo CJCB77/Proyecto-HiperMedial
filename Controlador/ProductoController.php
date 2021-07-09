@@ -34,6 +34,29 @@ switch($_POST['opcion'])
 		}
 	break;
 
+	case 'consultar_admin':
+		$datos=$objProducto->ObtenerTodos();
+		$tabla="";
+		//El foreach pasa los registros a una tabla html
+		//th define el encabezado de esa fila, en este caso id
+		
+		foreach($datos as $fila)
+		{
+			$tabla.="<tr>";
+			$tabla.="<th scope='row'>".$fila['id_producto']."</th>";
+			$tabla.="<td>".$fila['nombre']."</td>";
+			$tabla.="<td>".$fila['descripcion']."</td>";
+			$tabla.="<td>".$fila['id_categoria']."</td>";
+			$tabla.="<td>".$fila['precio']."</td>";
+			$tabla.="<td>".$fila['stock']."</td>";
+			$tabla.="<td>".$fila['marca']."</td>";
+			$tabla.="<td>".$fila['img']."</td>";
+			$tabla.="<td><button type='button' class='btn btn-outline-dark' onclick='editar(".$fila['id_producto'].")'>Editar</button></td>";
+			$tabla.="<tr>";
+		}
+		echo $tabla;
+	break;
+
 	case 'ingresar':
 			$datos['nombre']=$_POST['nombre'];
 			$datos['descripcion']=$_POST['descripcion'];
@@ -52,8 +75,20 @@ switch($_POST['opcion'])
 				}
 	break;
 
+	case 'actualizar':
+		$filtro['id_producto']=$_POST['codigo'];
+		$datos['nombre']=$_POST['nombre'];
+		$datos['descripcion']=$_POST['descripcion'];
+		$datos['id_categoria']=$_POST['categoria'];
+		$datos['precio']=$_POST['precio'];
+		$datos['stock']=$_POST['stock'];
+		$datos['marca']=$_POST['marca'];
+		$datos['img']= $_POST['imagen'];
+		echo $datos=$objProducto->Guardar($datos,$filtro);
+	break;
+
 	case 'consultaxcodigo':
-		$filtro['id']=$_POST['codigo'];
+		$filtro['id_producto']=$_POST['codigo'];
 		echo json_encode($datos=$objProducto->ObtenerFiltro($filtro));
 	break;
 

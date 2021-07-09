@@ -26,7 +26,7 @@ Eliminar Productos: <strong>Null</strong><br>
 
 Usuarios:<br>
 Registrar usuarios en la base de datos: <strong>Listo</strong><br>
-Iniciar Sesion con nombre y contraseña: <strong>Null</strong><br>
+Iniciar Sesion con nombre y contraseña: <strong>Listo</strong><br>
 Agregar producto al carrito de Compra: <strong>Null</strong><br>
 Panel de Admin(Solo el admin puede agregar,modificar y eliminar): <strong>Null</strong><br>
 Opcion "comprar" para los usuarios: <strong>Null</strong><br>

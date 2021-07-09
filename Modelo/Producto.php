@@ -17,6 +17,13 @@ Class Producto
 		$producto=$conexion->insertar('tbproducto',$datos);
 		return $producto;
 	}
+
+	public function Guardar($datos,$filtro)
+	{	$conexion=new Conexion;
+		$producto=$conexion->actualizar('tbproducto',$datos,$filtro);
+		return $producto;
+	}
+	
 	public function ObtenerFiltro($filtro)
 	{
 		$conexion=new Conexion;

@@ -111,6 +111,39 @@ Class conexion
 			return "Error al insertar... ".$this->error;
 		}
 	}
+
+	public function actualizar($tabla,$datos,$filtro)
+	{	
+		try {
+			$this->conectar();
+			$sql = "Update $tabla set ";
+			foreach($datos as $clave=>$valor)
+			{
+				$sql .="$clave= :$clave,";
+			}
+			$sql = substr ($sql, 0, strlen($sql) - 1)." where ";
+			foreach($filtro as $clave=>$valor)
+			{
+				$sql .="$clave = :$clave and ";
+			}
+			$sql = substr ($sql, 0, strlen($sql) - 4);
+			$stmt = $this->dbconn->prepare($sql);
+			foreach($datos as $clave=>$valor)
+			{$clave=':'.$clave;
+			 $stmt->bindValue($clave, $valor);
+			}
+			foreach($filtro as $clave=>$valor)
+			{$clave=':'.$clave;
+			 $stmt->bindValue($clave, $valor);
+			}
+			// execute the insert statement
+			$stmt->execute();
+			return "Datos actualizados...";
+		} catch (Exception $e) {
+			$this->error= $e->getMessage();
+			return "Error al actualizar... ".$this->error;
+		}
+	}
 	
 }
 ?>

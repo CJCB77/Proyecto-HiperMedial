@@ -47,9 +47,10 @@ switch($_POST['opcion'])
 			if ($passwd == $datos['contrasena']){
 
 				session_start();
+				
 
 				$_SESSION["usuarioid"] = $datos['id_usuario'];
-				$_SESSION["usuarioNombre"] = $datos['nombre'];
+				$_SESSION["usuarioNombre"] = $datos['usuario'];
 				exit;
 				
 			}
