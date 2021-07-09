@@ -17,6 +17,13 @@ Class Usuario
 		$usuario=$conexion->insertar('tbusuario',$datos);
 		return $usuario;
 	}
+
+	public function Guardar($datos,$filtro)
+	{	$conexion=new Conexion;
+		$producto=$conexion->actualizar('tbusuario',$datos,$filtro);
+		return $producto;
+	}
+
 	public function ObtenerFiltro($filtro)
 	{
 		$conexion=new Conexion;

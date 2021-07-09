@@ -32,7 +32,7 @@
             <div class="col-md-6 position-relative" style="background-color: #FFC947; height: 300px; border-top-right-radius: 15px;">
                 <a href="#" class="btn btn-lg btn-dark">Usuarios</a>
                 <div class="container-fluid">
-                    <a href="#" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
+                    <a href="usuarios_tabla.php" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
                 </div>  
             </div>
         </div>

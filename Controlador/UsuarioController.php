@@ -6,14 +6,27 @@ switch($_POST['opcion'])
 {
 	case 'consultar':
 		$datos=$objUsuario->ObtenerTodos();
+		$tabla="";
 		//El foreach pasa los registros a una tabla html
 		//th define el encabezado de esa fila, en este caso id
 		
 		foreach($datos as $fila)
 		{
-
-            //La consulta de usuarios
+			$tabla.="<tr>";
+			$tabla.="<th scope='row'>".$fila['id_usuario']."</th>";
+			$tabla.="<td>".$fila['usuario']."</td>";
+			$tabla.="<td>".$fila['contrasena']."</td>";
+			$tabla.="<td>".$fila['nombre']."</td>";
+			$tabla.="<td>".$fila['apellido']."</td>";
+			$tabla.="<td>".$fila['email']."</td>";
+			$tabla.="<td>".$fila['direccion']."</td>";
+			$tabla.="<td>".$fila['ciudad']."</td>";
+			$tabla.="<td>".$fila['celular']."</td>";
+			$tabla.="<td><button type='button' class='btn btn-outline-dark' onclick='editar(".$fila['id_usuario'].")'>Editar</button></td>";
+			$tabla.="<tr>";
+            
 		}
+		echo $tabla;
 	break;
 
 	case 'ingresar':
@@ -21,7 +34,7 @@ switch($_POST['opcion'])
 			$datos['contrasena']=$_POST['contrasena'];
 			$datos['nombre']=$_POST['nombre'];
 			$datos['apellido']=$_POST['apellido'];
-			$datos['email']=$_POST['correo'];
+			$datos['email']=$_POST['email'];
 			$datos['direccion']=$_POST['direccion'];
 			$datos['ciudad']=$_POST['ciudad'];
 			$datos['celular']=$_POST['celular'];
@@ -69,9 +82,20 @@ switch($_POST['opcion'])
 		session_destroy();
 	break;
 
+	case 'actualizar':
+		$filtro['id_usuario']=$_POST['codigo'];
+		$datos['usuario']=$_POST['usuario'];
+		$datos['contrasena']=$_POST['contrasena'];
+		$datos['apellido']=$_POST['apellido'];
+		$datos['email']=$_POST['email'];
+		$datos['direccion']=$_POST['direccion'];
+		$datos['ciudad']=$_POST['ciudad'];
+		$datos['celular']= $_POST['celular'];
+		echo $datos=$objUsuario->Guardar($datos,$filtro);
+	break;
 
 	case 'consultaxcodigo':
-		$filtro['id']=$_POST['codigo'];
+		$filtro['id_usuario']=$_POST['codigo'];
 		echo json_encode($datos=$objUsuario->ObtenerFiltro($filtro));
 	break;
 

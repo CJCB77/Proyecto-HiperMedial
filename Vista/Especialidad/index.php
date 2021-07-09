@@ -71,7 +71,6 @@
 
     <div class="container-lg mt-5 mb-5">
         <p class="text-start fs-2 fw-light mb-2 d-inline-block">Todos los productos</p>
-        <a href="nuevo.html" class="btn btn-dark btn-lg d-inline-block ms-5">Agregar Producto</a>
         <hr>
         <div class="container-fluid">
           <div class="row" id="datos">
