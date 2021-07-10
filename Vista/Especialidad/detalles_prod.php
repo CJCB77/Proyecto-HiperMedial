@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +61,7 @@
         while($fila = $resultado -> fetch_array()){
 
             echo " <div class='container-fluid mt-5'>";
+            echo "<form method='post' action='carrito.php?action=add&id=". $fila['id_producto'] . "'";
             echo "<div class='row'>";
 
             echo "<div class='col-6 text-center'>";
@@ -80,7 +82,16 @@
 
             echo "<p class='fs-6'>En stock <span class='fw-bold'>". $fila['stock'] ."</span></p>";
             echo "<p class='fs-5'><span class='fw-bold'>Precio:</span> $". $fila['precio'] ."</p>";
-            echo "<button class='btn btn-dark btn-lg mt-2'>Agregar a Carrito</button>";
+
+            //Guardamos los detalles en caso de ser agregado al carrito de compra
+            
+
+            echo "<input type='text' class='form-control' name='cantidad' value='1' style='width: 80px;'>";
+            echo "<input type='hidden' name='hidden_nombre' value='". $fila['nombre'] ."'>"; 
+            echo "<input type='hidden' name='hidden_precio' value='". $fila['precio'] ."'>"; 
+            echo "<input type='submit' class='btn btn-dark btn-lg mt-2' name='add' value='Agregar a carrito'>";
+            echo "</form>";
+            //echo "<button class='btn btn-dark btn-lg mt-2'>Agregar a Carrito</button>";
             echo "</div>";
 
             echo "</div>";
@@ -91,10 +102,9 @@
         }
     }
     
-
+    ?>
 
     
-    ?>
 
     
 

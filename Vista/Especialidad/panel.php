@@ -42,7 +42,7 @@
             border-bottom-left-radius: 15px;">
                 <a href="#" class="btn btn-lg btn-dark">Categorias</a>
                 <div class="container-fluid">
-                    <a href="#" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
+                    <a href="categorias_tabla.php" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
                 </div>  
             </div>
             <div class="col-md-6 position-relative" style="background-color: #F0D9E7; height: 300px; 

@@ -43,24 +43,24 @@ switch($_POST['opcion'])
 	case 'ingresar':
 		$datos['categoria']=$_POST['categoria'];
 		
-			if($objJefe->nuevoJefe($datos))
+			if($objCategoria->nuevo($datos))
 			{
 				echo "Registro ingresado";
 			}
 			else
 			{
-				echo "Error al registrar".$objJefe->geterror();
+				echo "Error al registrar";
 			}
 		break;
 		
 	case 'actualizar':
-		$filtro['id_categoria']=$_POST['id_categoria']; 
+		$filtro['id_categoria']=$_POST['codigo']; 
 		$datos['categoria']=$_POST['categoria'];
-		echo $datos=$objJefe->GuardarJefe($datos,$filtro);
+		echo $datos=$objCategoria->Guardar($datos,$filtro);
 		break;
 		
 	case 'consultaxcodigo':
-		$filtro['id_categoria']=$_POST['id_categoria'];
+		$filtro['id_categoria']=$_POST['codigo'];
 		echo json_encode($datos=$objCategoria->ObtenerFiltro($filtro));
 		break;
 		

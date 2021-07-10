@@ -1,8 +1,6 @@
-
-   <?php
+<?php
    session_start();
-   ?>
-   
+?>
 
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -52,7 +50,7 @@
                     }
                     else if (isset($_SESSION["usuarioid"])){
 
-                        echo "<a class='nav-item btn btn-outline-light ms-5' href='#'>
+                        echo "<a class='nav-item btn btn-outline-light ms-5' href='carrito.php'>
                         Carrito <img src='imgs/shopping-cart.svg' style='height:25px'>
                         </a>";
                         echo "<a class='nav-item btn btn-danger ms-3' href='../includes/logout.inc.php' >Cerrar Sesion</a>";

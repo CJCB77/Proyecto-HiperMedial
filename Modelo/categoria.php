@@ -12,6 +12,12 @@ Class Categoria
 		$categoria=$conexion->insertar('tbcategoria',$datos);
 		return $categoria;
 	}
+	public function Guardar($datos,$filtro)
+	{	$conexion=new Conexion;
+		$producto=$conexion->actualizar('tbcategoria',$datos,$filtro);
+		return $producto;
+	}
+
 	
 	public function ObtenerFiltro($filtro)
 	{
