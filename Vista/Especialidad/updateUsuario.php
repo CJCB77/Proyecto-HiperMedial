@@ -39,6 +39,9 @@
 	{
 		$.post("../../Controlador/UsuarioController.php",
 				{'opcion':'consultaxcodigo','codigo':getParameterByName('id')},respuesta1,'json');
+        
+        $.post("../../Controlador/CiudadController.php",
+				{'opcion':'combo'},respuestaCombo);	
 	}
     
     function respuesta1(arg)
@@ -50,11 +53,15 @@
 		$("#apellido").val(arg[0].apellido);
 		$("#email").val(arg[0].email);
 		$("#direccion").val(arg[0].direccion);
-		$("#ciudad").val(arg[0].ciudad);
+		$("#ciudad").val(arg[0].id_ciudad);
 		$("#celular").val(arg[0].celular);
 
 	}
 
+    function respuestaCombo(arg)
+	{
+		$("#ciudad").append(arg);
+	}
 
     function respuesta2(arg)
 	{
@@ -114,7 +121,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="ciudad">Ciudad:</label>
-                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="gye">
+                <select type="text" class="form-control" id="ciudad" name="ciudad" ></select>
             </div>
         </div>
             <div class="form-group col-md-6">

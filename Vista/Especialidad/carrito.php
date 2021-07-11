@@ -3,6 +3,8 @@
     $dbnombre = "dbpapeleria";
     $con = mysqli_connect("localhost:3307","root","",$dbnombre);
 
+if (isset($_SESSION['usuarioid'])){
+
     if(isset($_POST["add"])){
         if (isset($_SESSION["carrito"])){
             $item_array_id = array_column($_SESSION["carrito"], "id_producto");
@@ -39,13 +41,17 @@
             foreach ($_SESSION["carrito"] as $key => $value){
                 if($value["id_producto"] == $_GET["id"]){
                     unset($_SESSION["carrito"][$key]);
-                    echo "<script>alert('El producto ha sido removido')</script>";
                     echo '<script>window.location="carrito.php"</script>';
 
                 }
             }
         }
     }
+
+}else{
+    echo '<script>alert("Debe Iniciar Sesion")</script>';
+    echo '<script>window.location="login.php"</script>';
+}
 
 ?>
 
@@ -70,12 +76,24 @@
     
     }
 
-
-
     function respuesta2(arg)
     {
         $("#categorias").append(arg);
     }
+
+    $(function(){
+            $("#comprar").click(function(){ 
+                $.post("../../Controlador/OrdenController.php",
+                    $("#datos_orden").serialize(),respuesta);
+                window.location.href = "ordenes.php";
+            });
+            
+        });  
+        
+    function respuesta(arg)
+        {
+            alert(arg);
+        }
 
 
 
@@ -116,30 +134,37 @@ window.onload=cargarcontrolador;
                         <a class="nav-link" href="about.php">Quiénes Somos</a>
                     </li>
                 </ul>
-                <form class="d-flex ms-3">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-warning" type="submit">Buscar</button>
-                </form>
                 <?php
                     
                     if(isset($_SESSION["usuarioid"]) && ($_SESSION["usuarioNombre"] == "admin")){
 
-                        
+                        echo "<div class='ms-auto'>";
+                        echo "<a class='nav-item btn btn-outline-warning ms-3' href='ordenes.php' >
+                        Ordenes de Compra <img class='ms-2' src='imgs/checklist.svg' style='height:25px'>
+                        </a>";
                         echo "<a class='nav-item btn btn-info ms-3' href='panel.php' >Panel Admin</a>";
                         echo "<a class='nav-item btn btn-danger ms-3' href='../includes/logout.inc.php' >Cerrar Sesion</a>";
+                        echo "</div>";
 
                     }
                     else if (isset($_SESSION["usuarioid"])){
 
+                        echo "<div class='ms-auto'>";
+                        echo "<a class='nav-item btn btn-outline-warning ms-3' href='ordenes.php' >
+                        Ordenes de Compra <img class='ms-2' src='imgs/checklist.svg' style='height:25px'>
+                        </a>";
                         echo "<a class='nav-item btn btn-outline-light ms-5' href='carrito.php'>
                         Carrito <img src='imgs/shopping-cart.svg' style='height:25px'>
                         </a>";
                         echo "<a class='nav-item btn btn-danger ms-3' href='../includes/logout.inc.php' >Cerrar Sesion</a>";
+                        echo "</div>";
 
                     }else{
 
-                        echo "<a class='nav-item btn btn-warning ms-5' href='registro.php'>Registrarse</a>";
-                        echo "<a class='nav-item btn btn-light ms-2' href='login.php'>Iniciar Sesion</a>";
+                        echo "<div class='ms-auto'>";
+                        echo "<a class='nav-item btn btn-warning' href='registro.php'>Registrarse</a>";
+                        echo "<a class='nav-item btn btn-light ms-3' href='login.php'>Iniciar Sesion</a>";
+                        echo "</div>";
                     }
 
                 ?>
@@ -190,10 +215,37 @@ window.onload=cargarcontrolador;
                     }
                 }
                 ?>
+        </table>
+            
+        <form id="datos_orden">
 
+            <input type="text" class="form-control" name="opcion" value="ingresar" hidden />
+
+            <input type="hidden" name="hidden_usuario" value=<?php echo $_SESSION["usuarioid"]; ?> >
+
+            <input type="hidden" name="hidden_ciudad" value=<?php echo $_SESSION["ciudadUsuario"] ?> >
+
+            <input type="hidden" name="hidden_direccion" value="<?php echo $_SESSION["direccionUsuario"]; ?>" >
+   
+            <input type="hidden" name="hidden_nombre" value="<?php echo $_SESSION["nombreUsuario"]; ?>" >
+
+   
+            <input type="hidden" name="hidden_total" value= <?php 
+            if(isset($total)){
+                echo $total;
+            }
+            ?>>
         
 
-        </table>
+            <?php 
+            if(isset($total)){
+                echo "<button type='button' class='btn btn-lg btn-warning mt-5' id='comprar'>Comprar</button>";
+            }
+            ?>
+            
+        </form>
+        
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

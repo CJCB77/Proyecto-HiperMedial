@@ -38,10 +38,23 @@
         {
           $("#categorias").append(arg);
         }
+
+        function cargarcontroladorCombo()
+	    {
+		$.post("../../Controlador/CiudadController.php",
+				{'opcion':'combo'},respuestaCombo);
+    	}
+	
+	    function respuestaCombo(arg)
+	    {
+		$("#ciudad").append(arg);
+	    }	
+
         
     
     
         window.onload=cargarcontrolador;
+        window.onload=cargarcontroladorCombo;
     </script>
 </head>
 <body>
@@ -95,7 +108,7 @@
                 <div class="form-row col-md-6">
                     <div class="form-group">
                         <label for="correo">Email:</label>
-                        <input type="email" class="form-control" id="correo" name="correo" placeholder="correo">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="correo">
                     </div>
                 </div>    
             </div>
@@ -111,7 +124,7 @@
                 <div class="form-row col-md-6">
                     <div class="form-group">
                         <label for="ciudad">Ciudad:</label>
-                        <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="ciudad">
+                        <select type="text" class="form-control" id="ciudad" name="ciudad" ></select>
                     </div>
                 </div>    
             </div>

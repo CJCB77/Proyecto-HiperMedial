@@ -16,6 +16,8 @@
                 $.post("../../Controlador/UsuarioController.php",
                     $("#datos_inicio").serialize(),respuesta);
                     window.location.href = "index.php";
+                    window.location.href = "index.php";
+                    
             });
         }); 
 

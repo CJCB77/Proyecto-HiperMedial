@@ -8,6 +8,25 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="estilos/estilo.css">
+
+    <script type='text/javascript' src="../js/jquery-1.7.1.min.js" > </script>
+    <script type='text/javascript'>
+
+        function cargarcontrolador()
+        {
+          $.post("../../Controlador/CategoriaController.php",
+              {'opcion':'cargarCategorias'},respuesta2);
+        }
+    
+        function respuesta2(arg)
+        {
+          $("#categorias").append(arg);
+        }
+    
+    
+    
+        window.onload=cargarcontrolador;
+    </script>
 </head>
 <body>
 
@@ -45,8 +64,13 @@
                     <a href="categorias_tabla.php" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
                 </div>  
             </div>
+
             <div class="col-md-6 position-relative" style="background-color: #F0D9E7; height: 300px; 
             border-bottom-right-radius: 15px;">
+                <a href="#" class="btn btn-lg btn-dark">Ciudades</a>
+                <div class="container-fluid">
+                    <a href="ciudades_tabla.php" class="btn btn-lg btn-light position-absolute start-50 top-50 translate-middle">Consultar</a>    
+                </div>  
  
             </div>
         </div>

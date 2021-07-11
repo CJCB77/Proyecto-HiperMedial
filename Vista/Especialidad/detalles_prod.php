@@ -89,7 +89,12 @@
             echo "<input type='text' class='form-control' name='cantidad' value='1' style='width: 80px;'>";
             echo "<input type='hidden' name='hidden_nombre' value='". $fila['nombre'] ."'>"; 
             echo "<input type='hidden' name='hidden_precio' value='". $fila['precio'] ."'>"; 
-            echo "<input type='submit' class='btn btn-dark btn-lg mt-2' name='add' value='Agregar a carrito'>";
+            if($fila['stock'] > 0){
+                echo "<input type='submit' class='btn btn-dark btn-lg mt-2' name='add' value='Agregar a carrito'>";
+            }else{
+                echo "<a href='index.php' class='btn btn-dark btn-lg mt-2'>No disponible</a>";
+            }
+
             echo "</form>";
             //echo "<button class='btn btn-dark btn-lg mt-2'>Agregar a Carrito</button>";
             echo "</div>";

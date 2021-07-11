@@ -17,6 +17,9 @@
       $.post("../../Controlador/UsuarioController.php",
           {'opcion':'consultar'},respuesta);
         
+        $.post("../../Controlador/CategoriaController.php",
+              {'opcion':'cargarCategorias'},respuesta2);
+        
     }
 
     
@@ -25,11 +28,17 @@
       $("#datosUsuarios tbody").append(arg);
     }
 
+    function respuesta2(arg)
+        {
+          $("#categorias").append(arg);
+        }
+
 
     function editar(codigo)
-	{
+	  {
 		document.location.href = "updateUsuario.php?id=" + codigo;
-	}
+	  }
+    
 
 
     window.onload=cargarcontrolador;

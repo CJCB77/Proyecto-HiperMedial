@@ -38,6 +38,23 @@ Class conexion
 			return $e->getMessage();
 		}
 	}
+	public function consultarId($tabla,$id)
+	{	try {
+		if(!$this->conectar())
+		{	return "No conecta".$this->error;
+			exit;
+		}
+		$query="Select * from $tabla where id_usuario=$id";
+		//Prepare, prepara una sentencia SQL para su ejecución
+		$result_set = $this->dbconn->prepare($query);
+		$result_set->execute();
+		//fetchAll Devuelve un array que contiene todas las filas restantes del conjunto de resultados.
+		$result = $result_set->fetchAll();
+		return $result;
+		} catch (Exception $e) {
+			return $e->getMessage();
+		}
+	}
 	public function consultarUsuario($tabla,$usuario)
 	{	try {
 		if(!$this->conectar())

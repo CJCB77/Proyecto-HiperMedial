@@ -14,29 +14,24 @@
 
     function cargarcontrolador()
     {
-      $.post("../../Controlador/CategoriaController.php",
+      $.post("../../Controlador/OrdenController.php",
           {'opcion':'consultar'},respuesta);
+
       $.post("../../Controlador/CategoriaController.php",
           {'opcion':'cargarCategorias'},respuesta2);
-        
         
     }
 
     
     function respuesta(arg)
     {
-      $("#datosCategoria tbody").append(arg);
+      $("#datosOrden tbody").append(arg);
     }
 
     function respuesta2(arg)
     {
-          $("#categorias").append(arg);
+      $("#categorias").append(arg);
     }
-
-    function editar(codigo)
-	{
-		document.location.href = "updateCategoria.php?id=" + codigo;
-	}
 
 
     window.onload=cargarcontrolador;
@@ -49,18 +44,24 @@
     include_once 'Navbar.php';
     ?>
 
-<   <h1 class="text-center mt-5 mb-4">Listado de Categorias</h1>
-	<a class="btn btn-large btn-dark mb-3" href="nuevaCategoria.php">Agregar Categoria</a>
+<   <h1 class="text-center mt-5 mb-4">Listado de Productos</h1>
+	<a class="btn btn-large btn-dark mb-3" href="nuevoProd.php">Agregar Producto</a>
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
    
-    <table class="table table-striped" id="datosCategoria">
+    <table class="table table-striped" id="datosOrden">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Categoria</th>
+              <th scope="col">Id</th>
+              <th scope="col">Fecha de Compra</th>
+              <th scope="col">Fecha de Entrega</th>
+	            <th scope="col">Ciudad</th>
+	            <th scope="col">Direccion</th>
+	            <th scope="col">Nombre</th>
+	            <th scope="col">Total</th>
+	            <th scope="col">Estado de Entrega</th>
             </tr>
         </thead>
         <tbody>

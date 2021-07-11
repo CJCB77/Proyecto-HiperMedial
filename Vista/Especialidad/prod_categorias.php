@@ -34,52 +34,62 @@
     <?php
 
     include_once "Navbar.php";
+    $dbhost = 'localhost:3307';
+    $dbuser = 'root';
+    $dbpass = "";
+    $dbname = "dbpapeleria";
+
+    $id = $_GET['id'];
+
+    $obj_conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+    $sql = "select * from tbproducto where id_categoria=" . $id;
+    $resultado = $obj_conexion->query($sql);
+
+    $sql2 = "select categoria from tbcategoria where id_categoria=". $id;
+    $titulo = $obj_conexion->query($sql2);
 
     ?>
 
     <div class="container-lg mt-5 mb-5">
-        <p class="text-start fs-2 fw-light mb-2 d-inline-block">Boligrafos</p>
+        <p class="text-start fs-2 fw-light mb-2 d-inline-block">
+          <?php 
+          foreach($titulo as $row){
+            $categoria = $row['categoria'];
+            echo ucfirst($categoria) ;
+          }
+          ?>
+        </p>
         <hr>
         <div class="container-fluid">
           <div class="row" id="datos">
 
           <?php
 
-          $dbhost = 'localhost:3307';
-          $dbuser = 'root';
-          $dbpass = "";
-          $dbname = "dbpapeleria";
-
-          $id = $_GET['id'];
-
-          $obj_conexion = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-          $sql = "select * from tbproducto where id_categoria=" . $id;
-          $resultado = $obj_conexion->query($sql);
 
           foreach($resultado as $fila){
 
             echo "<div class='col-3'>";
-			$imagen = $fila['img'];
-			$id = $fila['id_producto'];
+			      $imagen = $fila['img'];
+			      $id = $fila['id_producto'];
 
             echo "<a href='detalles_prod.php?id=" . $id . "'" . "class='link-success'>";
-			echo "<img class='img-fluid mt-3' style='width: 250px; height:360px' src='../../" . $imagen . "'>";
-			echo "<p class='text-center fs-5 mt-1 fw-normal'>" . $fila['nombre']."</p>";
-			echo "</a>";
+			      echo "<img class='img-fluid mt-3' style='width: 250px; height:360px' src='../../" . $imagen . "'>";
+			      echo "<p class='text-center fs-5 mt-1 fw-normal'>" . $fila['nombre']."</p>";
+		      	echo "</a>";
 
             #Verifica que el producto este en stock
-			$stock = $fila['stock'];
-			if ($stock > 0){
-				echo " <p class='text-center fw-light lh-1 fs-6 fst-italic'>En stock!</p>";
-			}else{
-				echo " <p class='text-center fw-light lh-1 fs-6 fst-italic'>No disponible</p>";
-			}
+			     $stock = $fila['stock'];
+			      if ($stock > 0){
+				     echo " <p class='text-center fw-light lh-1 fs-6 fst-italic'>En stock!</p>";
+		      	}else{
+				     echo " <p class='text-center fw-light lh-1 fs-6 fst-italic'>No disponible</p>";
+		  	  }
 
 
-			echo "<p class='text-center lh-1 fs-6 fst-bold'>". "$".$fila['precio']."</p>";
-			// echo "<td><button type='button' class='btn btn-outline-dark' onclick='editar(".$fila['Id'].")'>Editar</button></td>";
-			echo "</div>";
+		    	echo "<p class='text-center lh-1 fs-6 fst-bold'>". "$".$fila['precio']."</p>";
+		    	// echo "<td><button type='button' class='btn btn-outline-dark' onclick='editar(".$fila['Id'].")'>Editar</button></td>";
+		    	echo "</div>";
 
           }
 

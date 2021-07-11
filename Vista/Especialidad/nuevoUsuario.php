@@ -27,8 +27,25 @@
             alert(arg);
         }
 
+        function cargarcontroladorCombo()
+	    {
+		$.post("../../Controlador/CiudadController.php",
+				{'opcion':'combo'},respuestaCombo);
+    	}
+	
+	    function respuestaCombo(arg)
+	    {
+		$("#ciudad").append(arg);
+	    }	
 
+        	
+	    function respuesta(arg)
+	    {
+		alert(arg);
+	    }
 
+        window.onload=cargarcontroladorCombo;
+	
 
     </script>
 </head>
@@ -46,7 +63,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="contrasena">Contraseña:</label>
-                <input type="text" class="form-control" id="contrasena" name="contrasena" placeholder="contrasena">
+                <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="contrasena">
             </div>
         </div>
         <div class="form-row">
@@ -76,7 +93,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="ciudad">Ciudad:</label>
-                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="gye">
+                <select type="text" class="form-control" id="ciudad" name="ciudad" ></select>
             </div>
         </div>
             <div class="form-group col-md-6">
