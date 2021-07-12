@@ -85,7 +85,8 @@ if (isset($_SESSION['usuarioid'])){
             $("#comprar").click(function(){ 
                 $.post("../../Controlador/OrdenController.php",
                     $("#datos_orden").serialize(),respuesta);
-                window.location.href = "ordenes.php";
+                    window.location.href = "ordenes.php";
+            
             });
             
         });  

@@ -30,24 +30,44 @@ switch($_POST['opcion'])
 	break;
 
 	case 'ingresar':
-			$datos['usuario']=$_POST['usuario'];
-			$datos['contrasena']=$_POST['contrasena'];
-			$datos['nombre']=$_POST['nombre'];
-			$datos['apellido']=$_POST['apellido'];
-			$datos['email']=$_POST['email'];
-			$datos['direccion']=$_POST['direccion'];
-			$datos['id_ciudad']=$_POST['ciudad'];
-			$datos['celular']=$_POST['celular'];
-			
-				if($objUsuario->nuevo($datos))
-				{
-					echo "Registro ingresado";
-	
+			$usuario_existe = false;
+			$usuario = $_POST['usuario'];
+			$comparar=$objUsuario->ObtenerTodos();
+			foreach($comparar as $fila){
+
+				if($usuario == $fila['usuario']){
+
+					$usuario_existe = true;
 				}
-				else
-				{
-					echo "Error al registrar";
-				}
+			}
+				
+
+			if (!$usuario_existe){
+
+				$datos['usuario']= $_POST['usuario'];
+				$datos['contrasena']= $_POST['contrasena'];
+				$datos['nombre']=$_POST['nombre'];
+				$datos['apellido']=$_POST['apellido'];
+				$datos['email']=$_POST['email'];
+				$datos['direccion']=$_POST['direccion'];
+				$datos['id_ciudad']=$_POST['ciudad'];
+				$datos['celular']=$_POST['celular'];
+				
+					if($objUsuario->nuevo($datos))
+					{
+						echo "Registro ingresado";
+		
+					}
+					else
+					{
+						echo "Error al registrar";
+					}
+
+			}else {
+				echo "Usuario ya existe";
+				
+			}
+
 	break;
 
 	case 'iniciar':
